@@ -49,7 +49,7 @@ public class ListDir {
 	public static void main(String[] args) throws java.io.IOException {
 
                 while(true){
-                   System.out.println("HELLO")
+                   System.out.println("HELLO");
                 }
 
 /*
