@@ -1,0 +1,51 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: ImageStream
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewBuild
+    creationTimestamp: null
+    labels:
+      build: native-list-dir
+    name: native-list-dir
+  spec:
+    lookupPolicy:
+      local: false
+  status:
+    dockerImageRepository: ""
+- apiVersion: v1
+  kind: BuildConfig
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewBuild
+    creationTimestamp: null
+    labels:
+      build: native-list-dir
+    name: native-list-dir
+  spec:
+    nodeSelector: null
+    output:
+      to:
+        kind: ImageStreamTag
+        name: native-list-dir:latest
+    postCommit: {}
+    resources: {}
+    source:
+      binary: {}
+      type: Binary
+    strategy:
+      dockerStrategy:
+        dockerfilePath: native-list-dir
+      type: Docker
+    triggers:
+    - github:
+        secret: 0CLoBlbklS0RJj1A33AH
+      type: GitHub
+    - generic:
+        secret: WX7tsntbvlnU4D-GZgmY
+      type: Generic
+  status:
+    lastVersion: 0
+kind: List
+metadata: {}
