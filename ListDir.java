@@ -48,6 +48,11 @@ import java.util.stream.Stream;
 public class ListDir {
 	public static void main(String[] args) throws java.io.IOException {
 
+                while(true){
+                   System.out.println("HELLO")
+                }
+
+/*
 		String root = ".";
 		if(args.length > 0) {
 			root = args[0];
@@ -66,5 +71,6 @@ public class ListDir {
 		}
 		
 		System.out.println("Total: " + count[0] + " files, total size = " + size[0] + " bytes");
+*/
 	}
 }
