@@ -1,48 +1,11 @@
 kind: "BuildConfig"
 apiVersion: "v1"
 metadata:
-  name: "graalvm-listdir-pipeline"
+  name: "graalvm-listdir-pipeline"I
 spec:
+  source:
+    git:
+      uri: "https://github.com/petenorth/graalvm-native-image-pipeline.git"
   strategy:
     jenkinsPipelineStrategy:
-      jenkinsfile: |-
-        pipeline {
-            agent {
-              node {
-                // spin up a graalvm slave pod to run this build on
-                label 'graalvm'
-              }
-            }
-
-            stages {
-                stage('build') {
-                    steps {
-                       sh '''
-                         git clone https://github.com/graalvm/graalvm-demos
-                         cd graalvm-demos/native-list-dir
-                         $GRAALVM_HOME/bin/javac ListDir.java
-                      ''' 
-                    }
-                } 
-                stage('build image') {
-                    steps {
-                       sh '''
-                         cd graalvm-demos/native-list-dir
-                         $GRAALVM_HOME/bin/native-image ListDir
-                      '''
-                    }
-                } 
-                stage('run') {
-                    steps {
-                       sh '''
-                         cd graalvm-demos/native-list-dir
-                         pwd
-                         ls -l
-                         time java ListDir $1
-                         time ./listdir $1
-                      '''
-                    } 
-                }
-            }
-        } 
-      type: JenkinsPipeline
+      jenkinsfilePath: jenkins/Jenkinsfile
