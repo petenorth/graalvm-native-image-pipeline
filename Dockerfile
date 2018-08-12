@@ -1,9 +1,9 @@
-#FROM centos:7
-FROM scratch
+FROM centos:7
+#FROM scratch
 COPY listdir /listdir
-#RUN ls -l /
+RUN ls -l /
 
 #USER 1001
 
-#CMD ["ls /"]
-CMD ["/listdir"]
+CMD ["ls"]
+#CMD ["/listdir"]
