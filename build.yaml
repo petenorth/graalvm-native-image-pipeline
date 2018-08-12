@@ -1,51 +1,40 @@
 apiVersion: v1
-items:
-- apiVersion: v1
-  kind: ImageStream
-  metadata:
-    annotations:
-      openshift.io/generated-by: OpenShiftNewBuild
-    creationTimestamp: null
-    labels:
-      build: native-list-dir
-    name: native-list-dir
-  spec:
-    lookupPolicy:
-      local: false
-  status:
-    dockerImageRepository: ""
-- apiVersion: v1
-  kind: BuildConfig
-  metadata:
-    annotations:
-      openshift.io/generated-by: OpenShiftNewBuild
-    creationTimestamp: null
-    labels:
-      build: native-list-dir
-    name: native-list-dir
-  spec:
-    nodeSelector: null
-    output:
-      to:
-        kind: ImageStreamTag
-        name: native-list-dir:latest
-    postCommit: {}
-    resources: {}
-    source:
-      binary: {}
-      type: Binary
-    strategy:
-      dockerStrategy:
-        dockerfilePath: native-list-dir
-      type: Docker
-    triggers:
-    - github:
-        secret: 0CLoBlbklS0RJj1A33AH
-      type: GitHub
-    - generic:
-        secret: WX7tsntbvlnU4D-GZgmY
-      type: Generic
-  status:
-    lastVersion: 0
-kind: List
-metadata: {}
+kind: BuildConfig
+metadata:
+  annotations:
+    openshift.io/generated-by: OpenShiftNewBuild
+  creationTimestamp: null
+  labels:
+    build: graalvm-native-image-pipeline
+  name: graalvm-native-image-pipeline
+spec:
+  failedBuildsHistoryLimit: 5
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: graalvm-native-image-pipeline:latest
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    git:
+      uri: https://github.com/petenorth/graalvm-native-image-pipeline.git
+    type: Git
+  strategy:
+    dockerStrategy:
+      from:
+        kind: DockerImage
+        name: scratch
+    type: Docker
+  successfulBuildsHistoryLimit: 5
+  triggers:
+  - github:
+      secret: tTurd9WzEPp1AuXCADAp
+    type: GitHub
+  - generic:
+      secret: xv8jWihF9JNFWc5qj5Fk
+    type: Generic
+  - type: ConfigChange
+status:
+  lastVersion: 0
