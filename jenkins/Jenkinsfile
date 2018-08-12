@@ -9,8 +9,6 @@
                 stage('build') {
                     steps {
                        sh '''
-                         git clone https://github.com/graalvm/graalvm-demos
-                         cd graalvm-demos/native-list-dir
                          $GRAALVM_HOME/bin/javac ListDir.java
                       ''' 
                     }
@@ -18,7 +16,6 @@
                 stage('build image') {
                     steps {
                        sh '''
-                         cd graalvm-demos/native-list-dir
                          $GRAALVM_HOME/bin/native-image ListDir
                       '''
                     }
@@ -26,7 +23,6 @@
                 stage('run') {
                     steps {
                        sh '''
-                         cd graalvm-demos/native-list-dir
                          pwd
                          ls -l
                          time java ListDir $1
