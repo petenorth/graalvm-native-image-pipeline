@@ -4,7 +4,7 @@ This was inspired by this tweet https://twitter.com/rauchg/status/10240130531535
 
 Initially (as can be seen in the Jenkinsfile) I wanted the slave to be a GraalVM enabled slave capable of producing the native image that I could then copy into a scratch image. The problem with runnning the native image executable on the slave is that the scratch image requires a statically linked executable (it will be missing a lot of the dynamically linked libraries) and it seems that the native-image executable when run with the --static flag doesn't know where to find stuff on RHEL/Centos (even after installing lots of stuff!) 
 
-Unfortunately Openshift doesn't support multi stage docker builds, so I followed https://blog.openshift.com/chaining-builds/ to work around this.
+The inspiration above used multi stage docker builds which Openshift doesn't support, so I followed https://blog.openshift.com/chaining-builds/ to work around this.
 
 
 
