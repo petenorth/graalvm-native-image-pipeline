@@ -1,4 +1,5 @@
 FROM scratch
-COPY app/istdir /app
+RUN ls /app/
+COPY /app/listdir /app
 
 CMD ["/app"]
