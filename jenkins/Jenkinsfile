@@ -16,7 +16,8 @@
                 stage('build image') {
                     steps {
                        sh '''
-                         $GRAALVM_HOME/bin/native-image --no-server -H:+ReportUnsupportedElementsAtRuntime --static ListDir
+                         #$GRAALVM_HOME/bin/native-image --no-server -H:+ReportUnsupportedElementsAtRuntime --static ListDir
+                         oc start-build graalvm-native-image-pipeline --from-dir=. --follow
                       '''
                     }
                 } 

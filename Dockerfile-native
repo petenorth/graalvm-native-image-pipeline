@@ -1,0 +1,10 @@
+FROM saturnism/graal:1.0.0-rc2
+RUN apt-get update && apt-get -y install gcc zlib1g-dev
+COPY ListDir /app/ListDir
+WORKDIR /app
+RUN native-image \
+     --no-server \
+     -H:+ReportUnsupportedElementsAtRuntime \
+     --static \
+     ListDir
+     

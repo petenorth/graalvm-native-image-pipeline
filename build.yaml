@@ -23,9 +23,10 @@ spec:
     type: Git
   strategy:
     dockerStrategy:
+      dockerfilePath: Dockerfile-native
       from:
         kind: DockerImage
-        name: scratch
+        name: saturnism/graal:1.0.0-rc2
     type: Docker
   successfulBuildsHistoryLimit: 5
   triggers:
