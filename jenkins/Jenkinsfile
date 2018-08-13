@@ -2,7 +2,7 @@
             agent {
               node {
                 // spin up a graalvm slave pod to run this build on
-                label 'graalvm'
+                label 'maven'
               }
             }
             stages {
@@ -17,7 +17,7 @@
                     steps {
                        sh '''
                          #$GRAALVM_HOME/bin/native-image --no-server -H:+ReportUnsupportedElementsAtRuntime --static ListDir
-                         oc start-build graalvm-native-image-pipeline --from-dir=. --follow
+                         oc start-build graalvm-native-image-ubuntu --from-dir=. --follow
                       '''
                     }
                 } 

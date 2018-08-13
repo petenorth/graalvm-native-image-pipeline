@@ -5,15 +5,15 @@ metadata:
     openshift.io/generated-by: OpenShiftNewBuild
   creationTimestamp: null
   labels:
-    build: graalvm-native-image-pipeline
-  name: graalvm-native-image-pipeline
+    build: graalvm-native-image-ubuntu
+  name: graalvm-native-image-ubuntu
 spec:
   failedBuildsHistoryLimit: 5
   nodeSelector: null
   output:
     to:
       kind: ImageStreamTag
-      name: graalvm-native-image-pipeline:latest
+      name: graalvm-native-image-ubuntu:latest
   postCommit: {}
   resources: {}
   runPolicy: Serial
