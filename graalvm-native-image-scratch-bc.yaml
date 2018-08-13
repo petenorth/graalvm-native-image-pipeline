@@ -1,0 +1,54 @@
+apiVersion: v1
+kind: BuildConfig
+metadata:
+  annotations:
+    openshift.io/generated-by: OpenShiftNewBuild
+  creationTimestamp: null
+  labels:
+    build: graalvm-native-image-scratch
+  name: graalvm-native-image-scratch
+spec:
+  failedBuildsHistoryLimit: 5
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: graalvm-native-image-scratch:latest
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    git:
+      uri: https://github.com/petenorth/graalvm-native-image-pipeline.git
+    images:
+    - from:
+        kind: ImageStreamTag
+        name: graalvm-native-image-ubuntu:latest
+        namespace: myproject
+      paths:
+      - destinationDir: .
+        sourcePath: /app
+    type: Git
+  strategy:
+    dockerStrategy:
+      from:
+        kind: DockerImage
+        name: scratch
+    type: Docker
+  successfulBuildsHistoryLimit: 5
+  triggers:
+  - github:
+      secret: 3ThIYgvq0CGJ3be_QgFY
+    type: GitHub
+  - generic:
+      secret: W_uXkLseAnD4Y5lgJ31G
+    type: Generic
+  - imageChange:
+      from:
+        kind: ImageStreamTag
+        name: graalvm-native-image-ubuntu:latest
+        namespace: myproject
+    type: ImageChange
+  - type: ConfigChange
+status:
+  lastVersion: 0
