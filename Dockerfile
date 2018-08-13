@@ -1,9 +1,4 @@
-#FROM centos:7
 FROM scratch
-COPY listdir /listdir
-#RUN ls -l /
+COPY app/istdir /app
 
-#USER 1001
-
-#CMD ["ls"]
-CMD ["/listdir"]
+CMD ["/app"]
