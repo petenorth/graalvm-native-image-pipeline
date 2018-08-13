@@ -10,7 +10,7 @@ The inspiration above used multi stage docker builds which Openshift doesn't sup
 
 ## Deploying
 
-You need to start minishift
+After starting minishift execute
 
     oc create graalvm-native-image-ubuntu-is.yaml
     oc create graalvm-native-image-scratch-is.yaml
@@ -18,8 +18,12 @@ You need to start minishift
     oc create graalvm-native-image-scratch-bc.yaml
     oc create -f pipeline.yaml
     
-The first builds will fail, you will need to run the pipeline
+The first builds will fail, the pipeline build needs to be run...
 
     oc start-build graalvm-listdir-pipeline
     
 Or via the Jenkins browser application or via the Openshift browser application.
+
+Then the native image Java application built using GraalVM technology packaged as a minimal scratch based docker image can be deployed as a new app via
+
+    oc new-app graalvm-native-image-scratch
