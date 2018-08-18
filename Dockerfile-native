@@ -1,6 +1,6 @@
 FROM petenorth/graal:1.0.0-rc5
 RUN apt-get update && apt-get -y install gcc zlib1g-dev
-COPY ListDir.class /app/ListDir.class
+COPY target .
 WORKDIR /app
 RUN native-image \
      --no-server \
