@@ -6,5 +6,5 @@ RUN native-image \
      --no-server \
      -H:+ReportUnsupportedElementsAtRuntime \
      --static \
-     ListDir
+     -jar target/$(ls target/*.jar)
      

@@ -20,6 +20,7 @@ spec:
   source:
     git:
       uri: https://github.com/petenorth/graalvm-native-image-pipeline.git
+      ref: spring-boot
     type: Git
   strategy:
     dockerStrategy:
