@@ -20,6 +20,7 @@ spec:
   source:
     git:
       uri: https://github.com/petenorth/graalvm-native-image-pipeline.git
+      ref: spring-boot
     images:
     - from:
         kind: ImageStreamTag
