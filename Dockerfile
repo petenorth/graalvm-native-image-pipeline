@@ -1,5 +1,5 @@
 FROM scratch
 
-COPY /app/listdir /app
+COPY /target/gs-rest-service-0.1.0 /app
 
 CMD ["/app"]
