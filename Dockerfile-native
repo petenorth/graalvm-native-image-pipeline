@@ -9,4 +9,4 @@ RUN native-image \
      -H:+ReportUnsupportedElementsAtRuntime \
      --static \
      -jar $(ls *.jar)
-     
+RUN ls     
