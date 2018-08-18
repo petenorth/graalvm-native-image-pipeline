@@ -33,7 +33,7 @@
                 stage('scratch image build') {
                     steps {
                        sh '''
-                         oc start-build graalvm-native-image-pipeline --from-dir=. --follow
+                         oc start-build graalvm-native-image-scratch --from-dir=. --follow
                       '''
                     } 
                 }
