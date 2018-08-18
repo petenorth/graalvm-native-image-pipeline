@@ -1,4 +1,4 @@
-FROM saturnism/graal:1.0.0-rc2
+FROM petenorth/graal:1.0.0-rc5
 RUN apt-get update && apt-get -y install gcc zlib1g-dev
 COPY ListDir.class /app/ListDir.class
 WORKDIR /app
