@@ -28,7 +28,7 @@ spec:
         namespace: myproject
       paths:
       - destinationDir: .
-        sourcePath: /app
+        sourcePath: /target
     type: Git
   strategy:
     dockerStrategy:
