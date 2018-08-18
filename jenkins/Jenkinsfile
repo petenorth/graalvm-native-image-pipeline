@@ -8,14 +8,14 @@
                 stage('build') {
                     steps {
                        sh '''
-                         $GRAALVM_HOME/bin/javac ListDir.java
+                         mvn clean package
                       ''' 
                     }
                 } 
                 stage('build image') {
                     steps {
                        sh '''
-                         #$GRAALVM_HOME/bin/native-image --no-server -H:+ReportUnsupportedElementsAtRuntime --static ListDir
+                         #$GRAALVM_HOME/bin/native-image --no-server -H:+ReportUnsupportedElementsAtRuntime --static -jar target/$(ls target/*.jar)
                          oc start-build graalvm-native-image-ubuntu --from-dir=. --follow
                       '''
                     }
