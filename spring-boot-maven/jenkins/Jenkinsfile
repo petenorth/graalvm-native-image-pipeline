@@ -8,6 +8,7 @@
                 stage('build') {
                     steps {
                        sh '''
+                         pwd
                          mvn clean package
                       ''' 
                     }
