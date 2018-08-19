@@ -1,0 +1,9 @@
+FROM petenorth/graal:1.0.0-rc5
+RUN apt-get update && apt-get -y install gcc zlib1g-dev
+COPY target /target/
+WORKDIR /target
+RUN native-image \
+     --no-server \
+     -H:+ReportUnsupportedElementsAtRuntime \
+     --static \
+     -jar $(ls *.jar)

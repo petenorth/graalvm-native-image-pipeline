@@ -1,0 +1,31 @@
+        pipeline {
+            agent {
+              node {
+                label 'maven'
+              }
+            }
+            stages {
+                stage('build') {
+                    steps {
+                       sh '''
+                         mvn clean package
+                      ''' 
+                    }
+                } 
+                stage('build image') {
+                    steps {
+                       sh '''
+                         #$GRAALVM_HOME/bin/native-image --no-server -H:+ReportUnsupportedElementsAtRuntime --static -jar target/$(ls target/*.jar)
+                         oc start-build spring-boot-maven-ubuntu --from-dir=. --follow
+                      '''
+                    }
+                } 
+                stage('scratch image build') {
+                    steps {
+                       sh '''
+                         oc start-build spring-boot-maven-scratch --from-dir=. --follow
+                      '''
+                    } 
+                }
+            }
+        } 
