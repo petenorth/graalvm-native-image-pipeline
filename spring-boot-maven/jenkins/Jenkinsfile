@@ -16,7 +16,7 @@
                     steps {
                        sh '''
                          #$GRAALVM_HOME/bin/native-image --no-server -H:+ReportUnsupportedElementsAtRuntime --static -jar target/$(ls target/*.jar)
-                         cd spring-boot-maven && oc start-build spring-boot-maven-ubuntu --from-dir=. --follow
+                         cd spring-boot-maven && pwd && ls && oc start-build spring-boot-maven-ubuntu --from-dir=. --follow
                       '''
                     }
                 } 
