@@ -23,7 +23,7 @@
                 stage('scratch image build') {
                     steps {
                        sh '''
-                         cd spring-boot-maven && oc start-build spring-boot-maven-scratch --from-dir=. --follow
+                         cd spring-boot-maven && pwd && ls && oc start-build spring-boot-maven-scratch --from-dir=. --follow
                       '''
                     } 
                 }
