@@ -8,8 +8,7 @@
                 stage('build') {
                     steps {
                        sh '''
-                         pwd
-                         mvn clean package
+                         cd spring-boot-maven && mvn clean package
                       ''' 
                     }
                 } 
@@ -17,14 +16,14 @@
                     steps {
                        sh '''
                          #$GRAALVM_HOME/bin/native-image --no-server -H:+ReportUnsupportedElementsAtRuntime --static -jar target/$(ls target/*.jar)
-                         oc start-build spring-boot-maven-ubuntu --from-dir=. --follow
+                         cd spring-boot-maven && oc start-build spring-boot-maven-ubuntu --from-dir=. --follow
                       '''
                     }
                 } 
                 stage('scratch image build') {
                     steps {
                        sh '''
-                         oc start-build spring-boot-maven-scratch --from-dir=. --follow
+                         cd spring-boot-maven && oc start-build spring-boot-maven-scratch --from-dir=. --follow
                       '''
                     } 
                 }
